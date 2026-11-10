@@ -1,0 +1,77 @@
+name: Задача для агента
+description: Одна цель, один исполнитель и проверяемый результат
+title: "[Task] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Согласуйте владельца до начала реализации. Assignee и комментарии не являются блокировкой.
+        Не включайте секреты, токены и персональные данные. Для небольшой задачи пишите кратко.
+  - type: textarea
+    id: goal
+    attributes:
+      label: Цель и контекст
+      description: Какой результат нужен пользователю? Как работает сейчас и как должно работать?
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Исполнитель
+      description: GitHub-логин одного ответственного; продублируйте его в Assignees, если доступно.
+      placeholder: "@github-login"
+    validations:
+      required: true
+  - type: input
+    id: reviewer
+    attributes:
+      label: Reviewer
+      description: Второй участник; его агент может помочь с проверкой.
+      placeholder: "@another-login"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Критерии готовности
+      description: Наблюдаемые результаты и важные граничные случаи.
+      placeholder: |
+        - [ ] Основной сценарий даёт ожидаемый результат
+        - [ ] Ошибочный ввод обрабатывается предсказуемо
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Границы работы
+      description: Компоненты/файлы, исключения и общие контракты, требующие координации.
+      placeholder: |
+        Меняем:
+        Не входит:
+        Общие файлы/API/схема/lockfile:
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Зависимости и параллельные задачи
+      description: Номера Issue/PR и порядок интеграции, либо «нет известных».
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Как проверить
+      description: Существующие команды/сценарии. Если команд пока нет, укажите это и способ проверки результата.
+    validations:
+      required: true
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Ветка и статус
+      description: Дополнить после распределения. Изменения статуса можно оставлять в комментариях.
+      value: |
+        Статус: Ready
+        Ветка: будет указана исполнителем
+        Базовая ветка: main
+        PR: ещё не создан
